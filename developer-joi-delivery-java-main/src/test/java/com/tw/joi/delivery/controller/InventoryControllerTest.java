@@ -1,5 +1,6 @@
 package com.tw.joi.delivery.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -23,8 +24,8 @@ class InventoryControllerTest {
         //add required mocking.
         mockMvc.perform(MockMvcRequestBuilders.get(getUrl,"store101")
                             .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk());
-        //put meaning assertions
-
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.storeId").value("store101"))
+            .andExpect(jsonPath("$.healthy").value(true));
     }
 }
