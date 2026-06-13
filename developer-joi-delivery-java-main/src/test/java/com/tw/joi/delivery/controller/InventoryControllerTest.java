@@ -17,15 +17,13 @@ class InventoryControllerTest {
     private MockMvc mockMvc;
 
 
-
     @Test
     void shouldReturnTheHealthOfTheStore() throws Exception {
         String getUrl = "/inventory/health?storeId={storeId}";
-        //add required mocking.
-        mockMvc.perform(MockMvcRequestBuilders.get(getUrl,"store101")
-                            .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.storeId").value("store101"))
-            .andExpect(jsonPath("$.healthy").value(true));
+        mockMvc.perform(MockMvcRequestBuilders.get(getUrl, "store101")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.storeId").value("store101"))
+                .andExpect(jsonPath("$.healthy").value(true));
     }
 }
