@@ -1,5 +1,6 @@
 package com.tw.joi.delivery.controller;
 
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,6 +48,21 @@ public class CartControllerTest {
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void shouldReturn400WhenAddProductRequestIsInvalid() throws Exception {
+        String url = "/cart/product";
+
+        String invalidRequestJson = "{\"outletId\":\"store101\"}";
+
+        mockMvc.perform(MockMvcRequestBuilders.post(url)
+                        .content(invalidRequestJson)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+
+        verifyNoInteractions(cartService);
+
     }
 
     @Test
