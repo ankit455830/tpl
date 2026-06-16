@@ -20,40 +20,40 @@ public class SeedData {
     public  static User user102 = SeedData.createUser("user102", "Ankit", "kumar");
 
     public static Map<String, Cart> cartForUsers = Map.of(
-            "user101", createCartForUser("user101", "John", "Doe", "cart101"),
-            "user102", createCartForUser("user102", "Rachel", "Zane", "cart102"));
+        "user101", createCartForUser("user101", "John", "Doe", "cart101"),
+        "user102", createCartForUser("user102", "Rachel", "Zane", "cart102"));
 
     public static List<GroceryProduct> groceryProducts =
-            Arrays.asList(createGroceryProduct("Wheat Bread", "product101", store101),
-                    createGroceryProduct("Spinach", "product102", store101),
-                    createGroceryProduct("Crackers", "product103", store102));
+        Arrays.asList(createGroceryProduct("Wheat Bread", "product101", store101),
+                      createGroceryProduct("Spinach", "product102", store101),
+                      createGroceryProduct("Crackers", "product103", store101));
 
     public static List<User> users = Arrays.asList(user101,user102);
 
     public static Cart createCartForUser(String userId, String firstName, String lastName,
                                          String cartId) {
         return Cart.builder()
-                .cartId(cartId)
-                .outlet(store101)
-                .user(user101)
-                .build();
+            .cartId(cartId)
+            .outlet(store101)
+            .user(user101)
+            .build();
     }
 
     public static GroceryStore createStore(String outletName, String storeId) {
         return GroceryStore.builder()
-                .name(outletName)
-                .outletId(storeId)
-                .build();
+            .name(outletName)
+            .outletId(storeId)
+            .build();
     }
 
     public static User createUser(String userId, String firstName, String lastName) {
         return User.builder()
-                .userId(userId)
-                .firstName(firstName)
-                .lastName(lastName)
-                .email(firstName + "." + lastName + "@gmail.com")
-                .phoneNumber(String.valueOf(SeedData.getRandomNumberUsingNextInt(100000000, 900000000)))
-                .build();
+            .userId(userId)
+            .firstName(firstName)
+            .lastName(lastName)
+            .email(firstName + "." + lastName + "@gmail.com")
+            .phoneNumber(String.valueOf(SeedData.getRandomNumberUsingNextInt(100000000, 900000000)))
+            .build();
     }
 
     public static int getRandomNumberUsingNextInt(int min, int max) {
@@ -64,14 +64,14 @@ public class SeedData {
     private static GroceryProduct createGroceryProduct(String productName,
                                                        String productId, GroceryStore store) {
         return GroceryProduct.builder()
-                .productName(productName)
-                .productId(productId)
-                .mrp(BigDecimal.valueOf(10.5))
-                .weight(BigDecimal.valueOf(500.00))
-                .store(store)
-                .threshold(10)
-                .availableStock(30)
-                .build();
+            .productName(productName)
+            .productId(productId)
+            .mrp(BigDecimal.valueOf(10.5))
+            .weight(BigDecimal.valueOf(500.00))
+            .store(store)
+            .threshold(10)
+            .availableStock(30)
+            .build();
     }
 
 }
