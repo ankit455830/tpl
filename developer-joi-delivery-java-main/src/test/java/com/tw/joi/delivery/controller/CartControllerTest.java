@@ -18,6 +18,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.NoSuchElementException;
+
 @WebMvcTest(CartController.class)
 public class CartControllerTest {
 
@@ -66,7 +68,7 @@ public class CartControllerTest {
     void shouldReturn404WhenCartNotFound() throws Exception {
         String url = "/cart/view?userId={userId}";
         String userId = "missing-user";
-        when(cartService.getCartForUser(userId)).thenThrow(new IllegalStateException("Cart not found for userId: missing-user"));
+        when(cartService.getCartForUser(userId)).thenThrow(new NoSuchElementException("Cart not found for userId: missing-user"));
 
         mockMvc.perform(MockMvcRequestBuilders.get(url, userId)
                         .contentType(MediaType.APPLICATION_JSON))

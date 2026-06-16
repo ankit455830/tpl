@@ -7,6 +7,7 @@ import com.tw.joi.delivery.dto.request.AddProductRequest;
 import com.tw.joi.delivery.dto.response.CartProductInfo;
 import com.tw.joi.delivery.seedData.SeedData;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +39,7 @@ public class CartService {
     private Cart fetchCartForUser(User user) {
         return Optional.ofNullable(userCarts.get(user.getUserId()))
             .orElseThrow(
-                () -> new IllegalStateException("Cart not found for userId: " + user.getUserId())
+                () -> new NoSuchElementException("Cart not found for userId: " + user.getUserId())
             );
     }
 
