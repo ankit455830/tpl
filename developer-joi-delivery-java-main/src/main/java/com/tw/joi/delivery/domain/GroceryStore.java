@@ -14,12 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GroceryStore extends Outlet {
 
-    private Set<GroceryProduct> inventory = new HashSet<>();
-
     @Builder
     public GroceryStore(String name, String description, String outletId) {
         super(name, description, outletId);
-        this.inventory = new HashSet<>();
     }
 
 }
